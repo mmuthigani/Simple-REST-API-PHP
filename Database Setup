@@ -1,0 +1,37 @@
+-- Setup the database
+-- Using PhpMyAdmin, create a new api_db database. Yes, api_db is the database name. After that, run the following SQL queries to create new tables with sample data.
+
+-- Create categories table
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `description` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+
+-- Insert data for categories table
+INSERT INTO `categories` (`id`, `name`, `description`, `created`, `modified`) VALUES
+(1, 'Fashion', 'Category for anything related to fashion.', '2014-06-01 00:35:07', '2014-05-30 17:34:33'),
+(2, 'Electronics', 'Gadgets, drones and more.', '2014-06-01 00:35:07', '2014-05-30 17:34:33'),
+(3, 'Motors', 'Motor sports and more', '2014-06-01 00:35:07', '2014-05-30 17:34:54');
+
+-- Create categories products
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
+
+
+-- Insert data for products table
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `created`, `modified`) VALUES
+(1, 'Samsung Galaxy A10', 'My first awesome phone!', '336', 3, '2022-04-01 01:12:26', '2022-05-31 17:12:26'),
+(2, 'Samsung Galaxy S4', 'The most awesome phone of 2022!', '299', 2, '2022-04-01 01:12:26', '2022-05-31 17:12:26'),
+(3, 'Samsung Galaxy A20', 'How about A30', '600', 3, '2022-04-01 01:12:26', '2022-05-31 17:12:26');
